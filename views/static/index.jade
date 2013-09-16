@@ -1,5 +1,41 @@
 extends ../layout
 
 block content
-  h1= title
-  p #{title} page for Node.js Blueprint
+  section#intro.s-intro
+    .l-constrained
+      .intro-logo
+        img(src=assets.url('/images/logo.svg'))
+      ul.intro-nav
+        li
+          a(href="#")
+          +icon("003")
+        li
+          a(href="#")
+          +icon("005")
+        li
+          a(href="#")
+          +icon("004")
+
+  section#signup.s-signup
+    .l-constrained
+      h1 Signup
+      a.btn(href="#") Standard Button
+      a.btn(href="#") Standard Button
+
+  section#donate.s-donate
+    .l-constrained
+      h1 Donate
+
+  section#share.s-share
+    .l-constrained
+      h1 Share
+      ul.share-icons
+        li
+          a(href="#")
+          +icon("000")
+        li
+          a(href="#")
+          +icon("001")
+        li
+          a(href="#")
+          +icon("002")

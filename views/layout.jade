@@ -54,9 +54,9 @@ html(lang="en")
       script(src='/javascripts/polyfills.js', type='text/javascript')
 
     //- koko wa Typekit -- replace VVVVVVV with the proper kit code
-    // script(type="text/javascript", src="//use.typekit.net/VVVVVVV.js")
-    // script.
-    //   try{Typekit.load();}catch(e){}
+    script(type="text/javascript", src="//use.typekit.net/nnh2mjv.js")
+    script.
+      try{Typekit.load();}catch(e){}
 
     //- koko wa Google Analytics
     if process.env.GOOGLE_ANALYTICS_KEY && process.env.GOOGLE_ANALYTICS_DOMAIN
@@ -88,17 +88,6 @@ html(lang="en")
   body
     include _mixins
     block content
-
-    if isDevelopment()
-      p: small Development Environment
-    if isProduction()
-      p: small Production Environment
-    p: small NODE_ENV: #{process.env.NODE_ENV}
-    img(src=assets.url('/images/lacroix-logo.png'))
-    p: +icon('000')
-    p: a.btn(href="#") Standard Button
-    form(style="max-width: 20em;")
-      input(type="email", placeholder="Email address")
 
 
     //- koko wa Width Plugin
