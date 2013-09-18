@@ -24,16 +24,14 @@ app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
-// app.use(express.cookieParser('_nodejs_blueprint_b2685bd0cb02e1049a903e3359c3903e3bbe'));
-// app.use(express.session());
 app.use(express.cookieParser());
-app.use(express.cookieSession({ secret: '_nodejs_blueprint_b2685bd0cb02e1049a903e3359c3903e3bbe' }));
+app.use(express.cookieSession({ secret: '_not_today_signup_16825abd2de10e49a0b3e33396920e3b' }));
 app.use(express.csrf());
 
 // csrf
 app.use(function(req, res, next){
-  res.locals.token = req.session._csrf;
-  res.cookie('XSRF-TOKEN', req.session._csrf);
+  res.locals.token = req.csrfToken();
+  res.cookie('XSRF-TOKEN', req.csrfToken());
   next();
 });
 

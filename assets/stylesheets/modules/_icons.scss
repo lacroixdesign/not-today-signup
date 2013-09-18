@@ -1,0 +1,21 @@
+/*
+ * Icons (action & social)
+ */
+.m-icon {
+  display: inline-block;
+  color: $white;
+  font-size: 4em;
+
+  > a {
+    display: inline-block;
+  }
+
+  > a:hover {
+    color: lighten($green, 5%);
+  }
+
+  > a:active {
+    color: darken($green, 5%);
+  }
+
+} // .m-icon

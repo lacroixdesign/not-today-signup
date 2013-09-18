@@ -7,21 +7,10 @@
   .share-icons {
     @include unstyled-list;
     margin: 2em auto;
-    color: $white;
-    font-size: 3em;
     text-align: center;
 
     li {
-      display: inline-block;
       margin: 0 0.5em;
-    }
-
-    a:hover {
-      color: lighten($green, 5%);
-    }
-
-    a:active {
-      color: darken($green, 5%);
     }
 
   } // .intro-nav

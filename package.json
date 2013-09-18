@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-blueprint",
-  "version": "0.1.0",
-  "description": "Blueprint for Node.js apps/sites",
+  "name": "not-today-signup",
+  "version": "0.0.1",
+  "description": "Email capture, donations, and social promotion for the Not Today Coalition.",
   "author": "LaCroix Design Co. <info@lacroixdesign.net> (http://www.lacroixdesign.net)",
   "license": "MIT",
   "private": true,
@@ -12,16 +12,12 @@
   "dependencies": {
     "express": "~3.x",
     "jade": "*",
-    "moment": "~2.x",
     "underscore": "~1.x",
-    "mongoose": "~3.6.x",
     "asset-rack": "~2.x",
     "dotenv": "*",
-    "nodetime": "~0.8.13",
     "newrelic": "~0.10.1"
   },
   "devDependencies": {
-    "coffee-script": "*",
     "mocha": "1.x",
     "should": "1.x",
     "request": "*",

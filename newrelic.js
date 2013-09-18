@@ -8,7 +8,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : ['Node.js Blueprint'],
+  app_name : [(process.env.NEW_RELIC_APP_NAME || 'Node.js Application')],
   /**
    * Your New Relic license key.
    */
