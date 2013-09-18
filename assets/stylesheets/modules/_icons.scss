@@ -1,21 +1,45 @@
 /*
- * Icons (action & social)
+ * Icon
  */
 .m-icon {
   display: inline-block;
   color: $white;
-  font-size: 4em;
 
-  > a {
-    display: inline-block;
+  [data-icon] {
+    font-size: 4em;
   }
 
-  > a:hover {
-    color: lighten($green, 5%);
+  .m-icon--label {
+    font-weight: bold;
+    text-transform: uppercase;
   }
 
-  > a:active {
-    color: darken($green, 5%);
-  }
+  &.action {
+    color: lighten($green, 45%);
+
+    > a {
+      display: inline-block;
+      @include transition(all 0.2s linear);
+    }
+
+    > a:hover {
+      color: $white;
+    }
+
+  } // &.action
+
+  &.animated {
+
+    > a [data-icon] {
+      @include transition(all 0.2s linear);
+      @include transform-origin(center center);
+      @include transform(rotateY(0deg));
+    }
+
+    > a:hover [data-icon] {
+      @include transform(rotateY(180deg));
+    }
+
+  } // &.animated
 
 } // .m-icon

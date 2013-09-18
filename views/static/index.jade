@@ -1,32 +1,41 @@
 extends ../layout
-
 block content
-  section#intro.s-intro
-    .l-constrained
-      .intro-logo
-        img(src=assets.url('/images/logo.svg'))
-      ul.intro-nav
-        li.m-icon.animated
-          a(href="#")
-            +icon("003")
-        li.m-icon.animated
-          a(href="#")
-            +icon("005")
-        li.m-icon.animated
-          a(href="#")
-            +icon("004")
 
-  section#signup.s-signup
+  //- Intro
+  section.s-intro
+    .l-constrained
+      header.s-intro--logo
+        img(src=assets.url('/images/logo.svg'))
+      nav
+        ul.l-icon-group
+          li.m-icon.animated.action
+            a(href="#")
+              +icon("003")
+              .m-icon--label Join
+          li.m-icon.animated.action
+            a(href="#")
+              +icon("005")
+              .m-icon--label Donate
+          li.m-icon.animated.action
+            a(href="#")
+              +icon("004")
+              .m-icon--label Share
+
+  //- Sign up
+  section.s-signup(style='display:none;')
     .l-constrained
       h1 Signup
-      a.btn(href="#") Standard Button
-      a.btn(href="#") Standard Button
+      a.btn-light(href="#") Light Button
+      br
+      a.btn-dark(href="#") Dark Button
 
-  section#donate.s-donate
+  //- Donate
+  section.s-donate(style='display:none;')
     .l-constrained
       h1 Donate
 
-  section#share.s-share
+  //- Share
+  section.s-share(style='display:none;')
     .l-constrained
       h1 Share
       ul.share-icons

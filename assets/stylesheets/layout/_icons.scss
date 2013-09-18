@@ -1,0 +1,12 @@
+.l-icon-group {
+  margin: 0;
+  text-align: center;
+  list-style: none;
+
+  .m-icon {
+    margin-bottom: 0;
+    margin-left: 2em;
+    &:first-child { margin-left: 0; }
+  }
+
+} // .l-icon-group

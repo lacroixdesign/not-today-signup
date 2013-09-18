@@ -1,3 +1,7 @@
-.btn {
-  @include btn(#555);
+.btn-light {
+  @include btn(lighten($green, 30), darken($green, 10), none);
+}
+
+.btn-dark {
+  @include btn(darken($green, 15), lighten($green, 10), none, 0.5);
 }
