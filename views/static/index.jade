@@ -3,9 +3,9 @@ block content
 
   //- Intro
   section.s-intro
-    .l-constrained
+    .l-constrained-medium
       header.s-intro--logo
-        img(src=assets.url('/images/logo.svg'))
+        img(src=assets.url('/images/logo.svg'), svg:fallback=assets.url('/images/logo.png'))
       nav
         ul.l-icon-group
           li.m-icon.animated.action
@@ -23,7 +23,7 @@ block content
 
   //- Sign up
   section.s-signup(style='display:none;')
-    .l-constrained
+    .l-constrained-medium
       h1 Signup
       a.btn-light(href="#") Light Button
       br
@@ -31,12 +31,12 @@ block content
 
   //- Donate
   section.s-donate(style='display:none;')
-    .l-constrained
+    .l-constrained-medium
       h1 Donate
 
   //- Share
   section.s-share(style='display:none;')
-    .l-constrained
+    .l-constrained-medium
       h1 Share
       ul.share-icons
         li.m-icon

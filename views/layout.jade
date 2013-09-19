@@ -1,8 +1,8 @@
 doctype 5
-<!--[if lt IE 9]> <html lang="en" class="ie8 old-ie"> <![endif]-->
-<!--[if IE 9]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if lt IE 9]> <html lang="en" xmlns:ng="http://angularjs.org" ng-app="ntc" id="ng-app" class="ie8 old-ie"> <![endif]-->
+<!--[if IE 9]>    <html lang="en" xmlns:ng="http://angularjs.org" ng-app="ntc" id="ng-app" class="ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->
-html(lang="en")
+html(lang="en", ng-app="ntc")
   <!--<![endif]-->
   //
     *
@@ -88,4 +88,13 @@ html(lang="en")
     if isDevelopment()
       #lacroix-browserwidth(style="position: fixed; bottom: 0; left: 0; background:#eee; color:#666666; font-size:0.65em; padding:0.35em; text-shadow: none; font-weight: bold; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border-top-right-radius: 2px; border-top: 1px solid #ddd; border-right: 1px solid #ddd;")
       script.
-        function showWidth(){var w = $(window).height();$('#lacroix-browserwidth').text(w);}showWidth();$(window).resize(function(){showWidth();});
+        if (typeof $ !== 'undefined') {
+          function showWidth() {
+            var w = $(window).height();
+            $('#lacroix-browserwidth').text(w);
+          }
+          showWidth();
+          $(window).resize(function() {
+            showWidth();
+          });
+        }

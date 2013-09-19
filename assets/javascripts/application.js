@@ -1,5 +1,2 @@
-//= require features/svg.js
-
-jQuery(function() {
-  // console.log("Testing...");
-});
+//= require_tree ./lib/directives
+//= require app/init

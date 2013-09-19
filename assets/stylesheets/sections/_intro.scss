@@ -19,7 +19,7 @@
     margin-top: 5em;
   }
 
-  @include media(min-height 550px) {
+  @include media-ie(min-height 550px) {
     margin-top: 6em;
   }
 
