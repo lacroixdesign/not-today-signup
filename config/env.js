@@ -20,7 +20,6 @@ module.exports = function(app, express) {
 
   // production only
   if ('production' === app.get('env')) {
-    app.use(express.logger('short'));
     app.set('mongodb-uri', process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/' + dbName + '_production');
   }
 
