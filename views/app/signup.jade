@@ -1,0 +1,13 @@
+//- Sign up
++template('signup.html')
+  .s-signup.m-section
+    //- a.section--back.btn-light.mini(ng:click='') &larr; back
+
+    //- Options
+    ul.signup-options(ng-hide='type')
+      li: a.btn-dark.x-large(ng-href='#{{route.signup}}/join') Join a Coalition
+      li: em: strong &mdash; or &mdash;
+      li: a.btn-dark.x-large(ng-href='#{{route.signup}}/start') Start a Coalition
+
+    form(ng-show='type')
+      h1() {{ type }}

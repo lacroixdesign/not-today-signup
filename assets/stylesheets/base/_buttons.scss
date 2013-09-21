@@ -1,7 +1,7 @@
 .btn-light {
-  @include btn(lighten($green, 30), darken($green, 10), none);
+  @include btn(lighten($green, 30), darken($green, 1), none);
 }
 
 .btn-dark {
-  @include btn(darken($green, 15), lighten($green, 10), none, 0.5);
+  @include btn(darken($green, 15), lighten($green, 1), none, 0.5);
 }

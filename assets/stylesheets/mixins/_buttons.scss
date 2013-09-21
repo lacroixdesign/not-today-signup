@@ -85,6 +85,10 @@
     font-size: 0.75em;
   }
 
+  &.fill {
+    display: block;
+  }
+
   i[data-icon] {
     position: relative;
     top: 2px;

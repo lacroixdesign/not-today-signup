@@ -1,5 +1,11 @@
 .s-signup {
   color: $white;
-  margin: 0 auto;
-  padding: 4em 0;
-}
+
+  .signup-options {
+    margin-left: 0;
+    list-style: none;
+    li { margin-bottom: 0.5em; }
+    em { color: lighten($green, 15); }
+  }
+
+} // .s-signup

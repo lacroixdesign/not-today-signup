@@ -1,0 +1,16 @@
+//- Nav
++template('nav.html')
+  .s-nav.m-section(role='navigation')
+    ul.l-icon-group
+      li.m-icon.action(ng:class='{subtle: !route.has(route.signup), animated: !route.has(route.signup)}')
+        a(ng-href='#{{route.signup}}')
+          +icon("003")
+          .icon--label Sign Up
+      li.m-icon.action(ng:class='{subtle: !route.has(route.donate), animated: !route.has(route.donate)}')
+        a(ng-href='#{{route.donate}}')
+          +icon("005")
+          .icon--label Donate
+      li.m-icon.action(ng:class='{subtle: !route.has(route.share), animated: !route.has(route.share)}')
+        a(ng-href='#{{route.share}}')
+          +icon("004")
+          .icon--label Share

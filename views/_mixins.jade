@@ -1,2 +1,6 @@
 mixin icon(icon)
   i(data-icon!='&#xe#{icon};')
+
+mixin template(name)
+  script(type='text/ng-template', id='#{name}')
+    block

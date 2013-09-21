@@ -1,5 +1,9 @@
 (function() {
 
-  angular.module('ntc', ['ldc.ui.svg']);
+  angular.module('ntc', [
+    'ntc.config'
+  , 'ntc.controllers'
+  , 'ldc.ui.svg'
+  ]);
 
 })();

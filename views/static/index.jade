@@ -1,50 +1,7 @@
 extends ../layout
 block content
 
-  //- Intro
-  section.s-intro
-    .l-constrained-medium
-      header.s-intro--logo
-        img(src=assets.url('/images/logo.svg'), svg:fallback=assets.url('/images/logo.png'))
-      nav
-        ul.l-icon-group
-          li.m-icon.animated.action
-            a(href="#")
-              +icon("003")
-              .m-icon--label Join
-          li.m-icon.animated.action
-            a(href="#")
-              +icon("005")
-              .m-icon--label Donate
-          li.m-icon.animated.action
-            a(href="#")
-              +icon("004")
-              .m-icon--label Share
-
-  //- Sign up
-  section.s-signup(style='display:none;')
-    .l-constrained-medium
-      h1 Signup
-      a.btn-light(href="#") Light Button
-      br
-      a.btn-dark(href="#") Dark Button
-
-  //- Donate
-  section.s-donate(style='display:none;')
-    .l-constrained-medium
-      h1 Donate
-
-  //- Share
-  section.s-share(style='display:none;')
-    .l-constrained-medium
-      h1 Share
-      ul.share-icons
-        li.m-icon
-          a(href="#")
-            +icon("000")
-        li.m-icon
-          a(href="#")
-            +icon("001")
-        li.m-icon
-          a(href="#")
-            +icon("002")
+  div(style='display:none;')
+    a.btn-light(href="#") Light Button
+    br
+    a.btn-dark(href="#") Dark Button

@@ -18,15 +18,16 @@
 @import "base/forms";
 
 // Layout
-@import "layout/header";
 @import "layout/footer";
 @import "layout/containers";
 @import "layout/icons";
 
 // Modules
 @import "modules/icons";
+@import "modules/sections";
 
 // Sections
+@import "sections/header";
 @import "sections/intro";
 @import "sections/signup";
 @import "sections/donate";

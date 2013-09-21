@@ -1,0 +1,8 @@
+//- Intro
++template('home.html')
+  .s-intro.m-section(ng-if='true')
+    .l-constrained-medium
+      .intro--logo
+        img(src=assets.url('/images/logo.svg'), svg:fallback=assets.url('/images/logo.png'))
+
+  div(ng-include='"nav.html"')

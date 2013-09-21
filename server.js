@@ -41,9 +41,11 @@ if ( cluster.isMaster ) {
   // config
   require('./config/env')(app, express);
 
+  // static files
+  app.use(express.static(path.join(__dirname, 'public')));
+
   // include any custom middleware before this app.router
   app.use(app.router);
-  app.use(express.static(path.join(__dirname, 'public')));
 
   // mongoose
   // app.db = mongoose;

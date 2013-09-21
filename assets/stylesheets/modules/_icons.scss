@@ -3,19 +3,28 @@
  */
 .m-icon {
   display: inline-block;
-  color: $white;
+  color: lighten($green, 45);
+  text-align: center;
 
   [data-icon] {
     font-size: 4em;
   }
 
-  .m-icon--label {
+  .icon--label {
     font-weight: bold;
     text-transform: uppercase;
   }
 
+  &.active {
+    color: $white;
+  }
+
+  &.subtle {
+    color: $white;
+    color: lighten($green, 15);
+  }
+
   &.action {
-    color: lighten($green, 45%);
 
     > a {
       display: inline-block;

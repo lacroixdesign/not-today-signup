@@ -30,6 +30,7 @@ html(lang="en", ng-app="ntc")
     meta(name="viewport", content="initial-scale=1.0, user-scalable=no, maximum-scale=1.0")
     meta(name="apple-mobile-web-app-capable", content="yes")
     meta(name="apple-mobile-web-app-status-bar-style", content="black")
+    base(href='/')
 
     title= pageTitle(title, "Not Today Coalition")
     meta(name="description", content="TODO: ADD DESCRIPTION")
@@ -79,9 +80,19 @@ html(lang="en", ng-app="ntc")
         })();
 
 
-  body
+  body(ng-controller="MainCtrl")
     include _mixins
-    block content
+    include app/nav.jade
+    include app/home.jade
+    include app/signup.jade
+    include app/donate.jade
+    include app/share.jade
+
+    //- h3() {{route.currentPath()}}
+    header#header(ng-hide='route.is(route.home)')
+      div(ng-include="'nav.html'")
+    .l-constrained-medium(role='main')
+      div(ng-view)
 
 
     //- screen width during dev
