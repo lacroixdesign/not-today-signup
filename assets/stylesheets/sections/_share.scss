@@ -2,11 +2,15 @@
 
   .share-icons {
     @include unstyled-list;
-    margin: 2em auto;
+    margin: 1em auto;
     text-align: center;
 
     li {
       margin: 0 0.5em;
+    }
+
+    a {
+      line-height: 1;
     }
 
   } // .intro-nav
