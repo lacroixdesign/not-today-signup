@@ -34,4 +34,6 @@ h6 {}
 
 p {}
 
-hr {}
+hr {
+  border-color: darken($light-green, 25);
+}

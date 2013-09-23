@@ -17,6 +17,8 @@
     .l-form(ng-show='emailFormVisible')
       form#signup-form.m-form.signup--form(ng:submit="shareEmail()", name="form", novalidate)
         div(ng:hide="complete")
+          p Insert copy about sharing via email here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu turpis mollis, ullamcorper leo quis, aliquet ante.
+          hr
           label Your Information
           .m-input-group
             input.large(type="text", name="name", ng:model="user.name", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Your Full name")
