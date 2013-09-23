@@ -92,7 +92,7 @@ html(lang="en", ng-app="ntc")
     header#header(ng-hide='route.is(route.home)')
       div(ng-include="'nav.html'")
     .l-constrained-small(role='main')
-      div(ng-view)
+      div.m-animate-view(ng-view)
 
 
     //- screen width during dev

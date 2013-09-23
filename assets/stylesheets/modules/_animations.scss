@@ -1,0 +1,18 @@
+.m-animate-view {
+
+  &.ng-enter {
+    @include transition(all 0.3s linear);
+  }
+
+  &.ng-enter,
+  &.ng-leave.ng-leave-active {
+    opacity: 0;
+    margin-top: 3em;
+  }
+  &.ng-leave,
+  &.ng-enter.ng-enter-active {
+    opacity: 1;
+    margin-top: 0;
+  }
+
+} // .m-animate-view

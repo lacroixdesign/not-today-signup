@@ -4,6 +4,7 @@
     'ntc.config'
   , 'ntc.controllers'
   , 'ldc.ui.svg'
+  , 'ngAnimate'
   ]);
 
 })();
