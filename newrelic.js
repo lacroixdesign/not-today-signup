@@ -8,7 +8,7 @@ exports.config = {
   /**
    * Array of application names.
    */
-  app_name : [(process.env.NEW_RELIC_APP_NAME || 'Node.js Application')],
+  app_name : [(process.env.NEW_RELIC_APP_NAME || 'Not Today Coalition')],
   /**
    * Your New Relic license key.
    */
