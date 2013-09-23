@@ -28,7 +28,7 @@
 
     > a {
       display: inline-block;
-      @include transition(all 0.2s linear);
+      @include transition(all 0.15s linear);
     }
 
     > a:hover {
@@ -40,7 +40,7 @@
   &.animated {
 
     > a [data-icon] {
-      @include transition(all 0.2s linear);
+      @include transition(all 0.15s linear);
       @include transform-origin(center center);
       @include transform(rotateY(0deg));
     }
