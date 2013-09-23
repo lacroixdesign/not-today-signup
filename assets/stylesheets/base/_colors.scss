@@ -1,3 +1,6 @@
 // Colors
-$white:      #fffefc;
-$green:      #6EA430;
+$white:       #fffefc;
+$green:       #6ea430;
+$light-green: lighten($green, 30);
+$dark-green:  darken($green, 15);
+$red:         #e75548;

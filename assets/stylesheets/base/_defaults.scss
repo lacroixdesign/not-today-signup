@@ -1,7 +1,7 @@
 // Basic Elements
 body {
   background: $green;
-  color: $white;
+  color: $light-green;
   font-family: $typeface-sans;
   text-shadow: 1px 1px 1px transparent;
 }
@@ -15,7 +15,6 @@ p, a, h1, h2, h3, h4, h5, label {
 }
 
 h1 {
-  border-bottom: 1px solid $white;
   font-family: $typeface-condensed;
   font-size: 3em;
   text-align: center;

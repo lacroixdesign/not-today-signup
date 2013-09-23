@@ -1,13 +1,37 @@
 //- Sign up
 +template('signup.html')
   .s-signup.m-section
-    //- a.section--back.btn-light.mini(ng:click='') &larr; back
 
     //- Options
-    ul.signup-options(ng-hide='type')
-      li: a.btn-dark.x-large(ng-href='#{{route.signup}}/join') Join a Coalition
-      li: em: strong &mdash; or &mdash;
-      li: a.btn-dark.x-large(ng-href='#{{route.signup}}/start') Start a Coalition
+    div(ng-hide='type')
+      p Insert copy about the Join a Coalition and Start a Coalition options here. Monocle ipsum dolor sit amet baggu cosy charming craftsmanship Asia-Pacific sophisticated.
+      ul.signup-options
+        li: a.btn-dark.x-large.fill(ng-href='#{{route.signup}}/join') Join a Coalition
+        li: em: strong &mdash; or &mdash;
+        li: a.btn-dark.x-large.fill(ng-href='#{{route.signup}}/start') Start a Coalition
 
-    form(ng-show='type')
-      h1() {{ type }}
+    //- Form
+    .l-form(ng-show='type', ng-switch='type')
+      div(ng-switch-when='join')
+        h1 Join a Coalition
+        p Insert copy about Join a Coalition here. Monocle ipsum dolor sit amet baggu cosy charming craftsmanship Asia-Pacific sophisticated.
+      div(ng-switch-when='start')
+        h1 Start a Coalition
+        p Insert copy about Start a Coalition here. Monocle ipsum dolor sit amet baggu cosy charming craftsmanship Asia-Pacific sophisticated.
+      form#signup-form.m-form.signup--form(ng:submit="submit('/signup', '')", name="form", novalidate)
+        div(ng:hide="complete")
+          .m-input-group
+            input.large(type="text", name="name", ng:model="user.name", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Full name")
+          .m-input-group
+            input.large(type="email", name="email", ng:model="user.email", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Email address")
+          button.btn-light.large.fill(type="submit", ng:disabled="processing")
+            | {{ type === 'start' ? 'Start' : 'Join' }}
+        #signup-form-error.form-error(ng:if="(form.email.$error || responseError) && attempted")
+          div(ng:if="form.email.$error.email") Invalid email address. Please double-check your entry and try again.
+          div(ng:if="form.email.$error.required") Email address is required.
+          div(ng:if="responseError") {{ responseError }}
+        #signup-form-success.form-success(ng:if="complete") Almost done! Check your inbox for instructions on confirming your email address.
+        #signup-form-suggestion.form-suggestion(mailcheck="user.email", ng:if="user.email")
+
+    .section--footer
+      p: a(ng-href='#{{route.home}}') &larr; return home

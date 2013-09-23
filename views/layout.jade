@@ -80,7 +80,7 @@ html(lang="en", ng-app="ntc")
         })();
 
 
-  body(ng-controller="MainCtrl")
+  body(ng-controller="MainCtrl", ng-init="listJoin='#{process.env.MAILCHIMP_LIST_JOIN || ''}'; listStart='#{process.env.MAILCHIMP_LIST_START || ''}'")
     include _mixins
     include app/nav.jade
     include app/home.jade
@@ -91,7 +91,7 @@ html(lang="en", ng-app="ntc")
     //- h3() {{route.currentPath()}}
     header#header(ng-hide='route.is(route.home)')
       div(ng-include="'nav.html'")
-    .l-constrained-medium(role='main')
+    .l-constrained-small(role='main')
       div(ng-view)
 
 

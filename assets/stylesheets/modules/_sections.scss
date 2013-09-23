@@ -1,3 +1,11 @@
 .m-section {
   text-align: center;
+
+  .section--footer {
+    margin: 2em auto;
+    color: $dark-green;
+    font-style: italic;
+    a:hover { text-decoration: underline; }
+  }
+
 } // .m-section

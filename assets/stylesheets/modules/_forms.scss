@@ -3,9 +3,13 @@ input[type="tel"],
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  @include input(#eee);
+  @include input($dark-green, lighten($green, 15), none);
 }
 
 textarea {
   height: 5em;
 }
+
+.m-input-group {
+  @include row;
+} // .m-input-group
