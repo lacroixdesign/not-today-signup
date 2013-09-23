@@ -61,7 +61,7 @@
   } // &.success
 
   @include placeholder {
-    color: darken($color, 15);
+    color: darken($color, 20);
     font-family: $typeface-sans;
     font-style: italic;
   }

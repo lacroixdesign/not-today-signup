@@ -80,7 +80,7 @@ html(lang="en", ng-app="ntc")
         })();
 
 
-  body(ng-controller="MainCtrl", ng-init="listJoin='#{process.env.MAILCHIMP_LIST_JOIN || ''}'; listStart='#{process.env.MAILCHIMP_LIST_START || ''}'")
+  body(ng-controller="MainCtrl")
     include _mixins
     include app/nav.jade
     include app/home.jade

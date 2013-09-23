@@ -44,9 +44,6 @@ if ( cluster.isMaster ) {
   // static files
   app.use(express.static(path.join(__dirname, 'public')));
 
-  // include any custom middleware before this app.router
-  app.use(app.router);
-
   // mongoose
   // app.db = mongoose;
   // app.db.connect(app.get('mongodb-uri'));
@@ -62,7 +59,8 @@ if ( cluster.isMaster ) {
   app.locals.errors  = {};
   app.locals.message = {};
 
-  // routes
+  // include any custom middleware before this app.router
+  app.use(app.router);
   require('./config/routes')(app);
 
   // start server

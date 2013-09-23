@@ -4,7 +4,7 @@
 
     //- Options
     div(ng-hide='type')
-      p Insert copy about the Join a Coalition and Start a Coalition options here. Monocle ipsum dolor sit amet baggu cosy charming craftsmanship Asia-Pacific sophisticated.
+      p Insert copy about the Join a Coalition and Start a Coalition options here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu turpis mollis, ullamcorper leo quis, aliquet ante.
       ul.signup-options
         li: a.btn-dark.x-large.fill(ng-href='#{{route.signup}}/join') Join a Coalition
         li: em: strong &mdash; or &mdash;
@@ -12,13 +12,15 @@
 
     //- Form
     .l-form(ng-show='type', ng-switch='type')
-      div(ng-switch-when='join')
+
+      div(ng-switch-when='join', ng-hide='complete')
         h1 Join a Coalition
-        p Insert copy about Join a Coalition here. Monocle ipsum dolor sit amet baggu cosy charming craftsmanship Asia-Pacific sophisticated.
-      div(ng-switch-when='start')
+        p Insert copy about Join a Coalition here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu turpis mollis, ullamcorper leo quis, aliquet ante.
+      div(ng-switch-when='start', ng-hide='complete')
         h1 Start a Coalition
-        p Insert copy about Start a Coalition here. Monocle ipsum dolor sit amet baggu cosy charming craftsmanship Asia-Pacific sophisticated.
-      form#signup-form.m-form.signup--form(ng:submit="submit('/signup', '')", name="form", novalidate)
+        p Insert copy about Start a Coalition here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu turpis mollis, ullamcorper leo quis, aliquet ante.
+
+      form#signup-form.m-form.signup--form(ng:submit="submit('{{type}}')", name="form", novalidate)
         div(ng:hide="complete")
           .m-input-group
             input.large(type="text", name="name", ng:model="user.name", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Full name")

@@ -2,13 +2,37 @@
 +template('share.html')
   .s-share.m-section
     h1 Share
+
     ul.share-icons
       li.m-icon
-        a(href="#")
+        a(ng-click='shareTwitter($event)', href="#")
           +icon("000")
       li.m-icon
-        a(href="#")
+        a(ng-click='shareFacebook($event)', href="#")
           +icon("001")
       li.m-icon
-        a(href="#")
+        a(ng-click='toggleEmailForm($event)', href='#')
           +icon("002")
+
+    .l-form(ng-show='emailFormVisible')
+      form#signup-form.m-form.signup--form(ng:submit="shareEmail()", name="form", novalidate)
+        div(ng:hide="complete")
+          label Your Information
+          .m-input-group
+            input.large(type="text", name="name", ng:model="user.name", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Your Full name")
+          .m-input-group
+            input.large(type="email", name="email", ng:model="user.email", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Your Email address")
+          label Destination Email Addresses
+          for i in [1,2,3,4,5]
+            .m-input-group
+              input.large(type="email", name="emailShare#{i}", ng:model="share.email#{i}", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Destination email")
+          button.btn-light.large.fill(type="submit", ng:disabled="processing") Share
+        #signup-form-error.form-error(ng:if="(form.email.$error || responseError) && attempted")
+          div(ng:if="form.email.$error.email") Invalid email address. Please double-check your entry and try again.
+          div(ng:if="form.email.$error.required") Email address is required.
+          div(ng:if="responseError") {{ responseError }}
+        #signup-form-success.form-success(ng:if="complete") Insert copy about invite emails being sent to the addresses entered.
+        #signup-form-suggestion.form-suggestion(mailcheck="user.email", ng:if="user.email")
+
+    .section--footer
+      p: a(ng-href='#{{route.home}}') &larr; return home

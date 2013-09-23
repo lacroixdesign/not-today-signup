@@ -10,6 +10,14 @@ textarea {
   height: 5em;
 }
 
+.m-form {
+
+  .form-success {
+    font-size: 1.25em;
+  }
+
+} // .m-form
+
 .m-input-group {
   @include row;
 } // .m-input-group

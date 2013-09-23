@@ -2,3 +2,20 @@
 +template('donate.html')
   .s-donate.m-section
     h1 Donate
+
+    .l-form
+      form#signup-form.m-form.signup--form(ng:submit="submit()", name="form", novalidate)
+        div(ng:hide="complete")
+          p Insert copy about donating here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu turpis mollis, ullamcorper leo quis, aliquet ante.
+          .m-input-group
+            input.large(type="text", name="amount", ng:model="donate.amount", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Amount")
+          button.btn-light.large.fill(type="submit", ng:disabled="processing") Donate
+        #signup-form-error.form-error(ng:if="(form.email.$error || responseError) && attempted")
+          //- div(ng:if="form.email.$error.email") Invalid email address. Please double-check your entry and try again.
+          //- div(ng:if="form.email.$error.required") Email address is required.
+          div(ng:if="responseError") {{ responseError }}
+        #signup-form-success.form-success(ng:if="complete") Thanks for your support! Add additional post-donation copy here.
+        #signup-form-suggestion.form-suggestion(mailcheck="donate.amount", ng:if="donate.amount")
+
+    .section--footer
+      p: a(ng-href='#{{route.home}}') &larr; return home
