@@ -4,7 +4,8 @@
 
     //- Options
     div(ng-hide='type')
-      p Insert copy about the Join a Coalition and Start a Coalition options here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu turpis mollis, ullamcorper leo quis, aliquet ante.
+      p The Not Today Coalition is declaring an end to the injustices that millions of Dalits are experiencing across India.
+      p Join us as we seek to provide education to half-a-million Dalit children by the year 2025. You can make a difference.
       ul.signup-options
         li: a.btn-dark.x-large.fill(ng-href='#{{route.signup}}/join') Join a Coalition
         li: em: strong &mdash; or &mdash;
@@ -14,26 +15,29 @@
     .l-form(ng-show='type', ng-switch='type')
 
       div(ng-switch-when='join', ng-hide='complete')
-        h1 Join a Coalition
-        p Insert copy about Join a Coalition here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu turpis mollis, ullamcorper leo quis, aliquet ante.
+        h1 Join the Coalition
+        p Sign up here to join the Coalition. By joining the NTC you will learn more about ways to participate in the effort to build schools and deliver HOPE for the Dalits of India.
       div(ng-switch-when='start', ng-hide='complete')
         h1 Start a Coalition
-        p Insert copy about Start a Coalition here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eu turpis mollis, ullamcorper leo quis, aliquet ante.
+        p Sign up here start a coalition. You can become an agent of change for the Dalits. Reaching out to your friends and family, you can help us by starting your own fundraising campaign. We will provide you with everything you need to run your own coalition.
 
       form#signup-form.m-form.signup--form(ng:submit="submit('{{type}}')", name="form", novalidate)
         div(ng:hide="complete")
           .m-input-group
-            input.large(type="text", name="name", ng:model="user.name", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Full name")
+            input.large(type="text", name="firstName", ng:model="user.firstName", ng:keydown="clearErrors()", ng:change="clearErrors()", placeholder="First name")
+          .m-input-group
+            input.large(type="text", name="lastName", ng:model="user.lastName", ng:keydown="clearErrors()", ng:change="clearErrors()", placeholder="Last name")
           .m-input-group
             input.large(type="email", name="email", ng:model="user.email", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Email address")
-          button.btn-light.large.fill(type="submit", ng:disabled="processing")
-            | {{ type === 'start' ? 'Start' : 'Join' }}
-        #signup-form-error.form-error(ng:if="(form.email.$error || responseError) && attempted")
+        #signup-form-error.form--error(ng:if="(form.email.$error || responseError) && attempted")
           div(ng:if="form.email.$error.email") Invalid email address. Please double-check your entry and try again.
           div(ng:if="form.email.$error.required") Email address is required.
           div(ng:if="responseError") {{ responseError }}
-        #signup-form-success.form-success(ng:if="complete") Almost done! Check your inbox for instructions on confirming your email address.
-        #signup-form-suggestion.form-suggestion(mailcheck="user.email", ng:if="user.email")
+        //- #signup-form-success.form-success(ng:if="complete") Almost done! Check your inbox for instructions on confirming your email address.
+        #signup-form-success.form--success(ng:if="complete") Thank you for joining the Not Today Coalition.
+        #signup-form-suggestion.form--suggestion(mailcheck="user.email", ng:if="user.email")
+        button.btn-light.large.fill(type="submit", ng:disabled="processing", ng:hide="complete")
+          | {{ type === 'start' ? 'Start' : 'Join' }}
 
     .section--footer
       p: a(ng-href='#{{route.home}}') &larr; return home

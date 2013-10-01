@@ -93,19 +93,3 @@ html(lang="en", ng-app="ntc")
       div(ng-include="'nav.html'")
     .l-constrained-small(role='main')
       div.m-animate-view(ng-view)
-
-
-    //- screen width during dev
-    if isDevelopment()
-      #lacroix-browserwidth(style="position: fixed; bottom: 0; left: 0; background:#eee; color:#666666; font-size:0.65em; padding:0.35em; text-shadow: none; font-weight: bold; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; border-top-right-radius: 2px; border-top: 1px solid #ddd; border-right: 1px solid #ddd;")
-      script.
-        if (typeof $ !== 'undefined') {
-          function showWidth() {
-            var w = $(window).height();
-            $('#lacroix-browserwidth').text(w);
-          }
-          showWidth();
-          $(window).resize(function() {
-            showWidth();
-          });
-        }

@@ -5,3 +5,4 @@ require('vendor/fastclick.min');
 require('vendor/angular.min');
 require('vendor/angular-route.min');
 require('vendor/angular-animate.min');
+require('bower/mailcheck/src/mailcheck.min');

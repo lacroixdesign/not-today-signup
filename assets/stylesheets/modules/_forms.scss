@@ -12,8 +12,21 @@ textarea {
 
 .m-form {
 
-  .form-success {
+  .form--success {
     font-size: 1.25em;
+  }
+
+  .form--error {
+    margin-bottom: 0.75em;
+  }
+
+  .form--suggestion {
+    display: block;
+    margin-bottom: 0.75em;
+    font-style: italic;
+    cursor: pointer;
+    span { font-style: normal; }
+    &:hover { text-decoration: underline; }
   }
 
 } // .m-form

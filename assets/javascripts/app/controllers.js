@@ -16,13 +16,29 @@
       }])
 
     // Signup controller
-    .controller('SignupCtrl', ['$scope', '$routeParams', 'Router', 'type',
-      function($scope, $routeParams, Router, type) {
+    .controller('SignupCtrl', ['$scope', '$routeParams', '$http', 'Router', 'type',
+      function($scope, $routeParams, $http, Router, type) {
         $scope.type = type;
 
-        $scope.submit = function(path) {
-          console.log('Submit: ', path);
-          $scope.complete = true;
+        $scope.clearErrors = function () {
+          $scope.attempted     = false;
+          $scope.responseError = null;
+        };
+
+        $scope.submit = function (path) {
+          var url = '/' + path;
+          $scope.attempted = true;
+          if ($scope.form.$valid) {
+            $scope.processing = true;
+            $http.post(url, $scope.user)
+              .success(function () {
+                $scope.complete = true;
+              })
+              .error(function (data) {
+                $scope.responseError = data.msg;
+                $scope.processing    = false;
+              });
+          }
         };
       }])
 

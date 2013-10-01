@@ -3,7 +3,8 @@ process.env.NODE_ENV = 'test';
 // import modules
 var app     = require('../server')
   , http    = require('http')
-  , Browser = require('zombie');
+  , Browser = require('zombie')
+  ;
 
 // set vars
 var port = 3003
@@ -20,21 +21,21 @@ module.exports = {
   port: port,
   url:  url,
 
-  server: function() {
+  server: function () {
     return http.createServer(app).listen(port);
   },
 
-  browser: function() {
+  browser: function () {
     return (new Browser({ site: url }));
   },
 
   db: {
-    close: function(done) {
+    close: function (done) {
       app.db.connection.close(done);
     },
 
-    clear: function(model, done) {
-      model.remove({}, function() {
+    clear: function (model, done) {
+      model.remove({}, function () {
         done();
       });
     }
