@@ -21,7 +21,7 @@
         h1 Start a Coalition
         p Sign up here start a coalition. You can become an agent of change for the Dalits. Reaching out to your friends and family, you can help us by starting your own fundraising campaign. We will provide you with everything you need to run your own coalition.
 
-      form#signup-form.m-form.signup--form(ng:submit="submit('{{type}}')", name="form", novalidate)
+      form#signup-form.m-form(ng:submit="submit('{{type}}')", name="form", novalidate)
         div(ng:hide="complete")
           .m-input-group
             input.large(type="text", name="firstName", ng:model="user.firstName", ng:keydown="clearErrors()", ng:change="clearErrors()", placeholder="First name")
@@ -29,13 +29,13 @@
             input.large(type="text", name="lastName", ng:model="user.lastName", ng:keydown="clearErrors()", ng:change="clearErrors()", placeholder="Last name")
           .m-input-group
             input.large(type="email", name="email", ng:model="user.email", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Email address")
-        #signup-form-error.form--error(ng:if="(form.email.$error || responseError) && attempted")
+        .form--error(ng:if="(form.email.$error || responseError) && attempted")
           div(ng:if="form.email.$error.email") Invalid email address. Please double-check your entry and try again.
           div(ng:if="form.email.$error.required") Email address is required.
           div(ng:if="responseError") {{ responseError }}
         //- #signup-form-success.form-success(ng:if="complete") Almost done! Check your inbox for instructions on confirming your email address.
-        #signup-form-success.form--success(ng:if="complete") Thank you for joining the Not Today Coalition.
-        #signup-form-suggestion.form--suggestion(mailcheck="user.email", ng:if="user.email")
+        .form--success(ng:if="complete") Thank you for joining the Not Today Coalition.
+        .form--suggestion(mailcheck="user.email", ng:if="user.email")
         button.btn-light.large.fill(type="submit", ng:disabled="processing", ng:hide="complete")
           | {{ type === 'start' ? 'Start' : 'Join' }}
 

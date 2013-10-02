@@ -4,19 +4,19 @@
     h1 Donate
 
     .l-form
-      form#signup-form.m-form.signup--form(ng:submit="submit()", name="form", novalidate)
+      form#donate-form.m-form(ng:submit="submit()", name="form", novalidate)
         div(ng:hide="complete")
           p &ldquo;A Dalit child that is educated is a Dalit child who has been rescued from human trafficking&rdquo;
           p Help support the Not Today Coalition today by donating below.  Your donations will help build schools and build hope.
           .m-input-group
             input.large(type="text", name="amount", ng:model="donate.amount", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Amount")
-          button.btn-light.large.fill(type="submit", ng:disabled="processing") Donate
-        #signup-form-error.form-error(ng:if="(form.email.$error || responseError) && attempted")
+        .form-error(ng:if="(form.email.$error || responseError) && attempted")
           //- div(ng:if="form.email.$error.email") Invalid email address. Please double-check your entry and try again.
           //- div(ng:if="form.email.$error.required") Email address is required.
           div(ng:if="responseError") {{ responseError }}
-        #signup-form-success.form-success(ng:if="complete") Thank you for your support of the Not Today Coalition. Together we are building hope.
-        #signup-form-suggestion.form-suggestion(mailcheck="donate.amount", ng:if="donate.amount")
+        .form-success(ng:if="complete") Thank you for your support of the Not Today Coalition. Together we are building hope.
+        .form-suggestion(mailcheck="donate.amount", ng:if="donate.amount", ng:hide="complete")
+        button.btn-light.large.fill(type="submit", ng:disabled="processing", ng:hide="complete") Donate
 
     .section--footer
       p: a(ng-href='#{{route.home}}') &larr; return home

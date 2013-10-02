@@ -17,7 +17,8 @@
     "request": "~2.27.0",
     "newrelic": "~0.10.1",
     "dotenv": "*",
-    "mailchimp-api": "~2.0.3"
+    "mailchimp-api": "~2.0.3",
+    "mandrill-api": "~1.0.35"
   },
   "devDependencies": {
     "mocha": "1.x",

@@ -15,10 +15,11 @@
           +icon("002")
 
     .l-form(ng-show='emailFormVisible')
-      form#signup-form.m-form.signup--form(ng:submit="shareEmail()", name="form", novalidate)
+      form#share-email-form.m-form(ng:submit="shareEmail()", name="form", novalidate)
         div(ng:hide="complete")
           p Help us tell the story of Not Today Coalition. Introduce us to your family and friends. Enter their email below.
           hr
+          //- User info
           label Your Information
           .m-input-group
             input.large(type="text", name="firstName", ng:model="user.firstName", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Your first name")
@@ -26,17 +27,18 @@
             input.large(type="text", name="lastName", ng:model="user.lastName", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Your last name")
           .m-input-group
             input.large(type="email", name="email", ng:model="user.email", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Your Email address")
+          .form--suggestion(mailcheck="user.email", ng:if="user.email")
+          //- Destination emails
           label Destination Email Addresses
-          for i in [1,2,3,4,5]
-            .m-input-group
-              input.large(type="email", name="emailShare#{i}", ng:model="share.email#{i}", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Destination email")
-              .form--suggestion(mailcheck="share.email#{i}", ng:if="share.email#{i}")
-        #signup-form-error.form--error(ng:if="(form.email.$error || responseError) && attempted")
+          .m-input-group(ng-repeat="destination in destinations track by $index")
+            input.large(type="email", name="email", ng:model="destination.email", ng:keydown="clearErrors()", ng:change="clearErrors()", placeholder="Destination email")
+            .form--suggestion(mailcheck="destination.email", ng:if="destination.email")
+        .form--error(ng:if="(form.email.$error || responseError) && attempted")
           div(ng:if="form.email.$error.email") Invalid email address. Please double-check your entry and try again.
-          div(ng:if="form.email.$error.required") Email address is required.
+          div(ng:if="form.email.$error.required") Your name and email address are required.
+          div(ng:if="validDestinations().length < 1") At least one destination is required.
           div(ng:if="responseError") {{ responseError }}
-        #signup-form-success.form--success(ng:if="complete") Thank you for helping us spread the word about the Not Today Coalition.
-        #signup-form-suggestion.form--suggestion(mailcheck="user.email", ng:if="user.email")
+        .form--success(ng:if="complete") Thank you for helping us spread the word about the Not Today Coalition.
         button.btn-light.large.fill(type="submit", ng:disabled="processing", ng:hide="complete") Share
 
     .section--footer

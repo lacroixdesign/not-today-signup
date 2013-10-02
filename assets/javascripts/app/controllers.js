@@ -52,8 +52,25 @@
       }])
 
     // Share controller
-    .controller('ShareCtrl', ['$scope',
-      function($scope) {
+    .controller('ShareCtrl', ['$scope', '$http',
+      function($scope, $http) {
+        $scope.destinations = [{},{},{},{},{}];
+
+        $scope.clearErrors = function () {
+          $scope.attempted     = false;
+          $scope.responseError = null;
+        };
+
+        $scope.validDestinations = function () {
+          return $scope.destinations
+            .map(function (dest) {
+              return dest.email;
+            })
+            .filter(function (dest) {
+              return dest;
+            });
+        };
+
         $scope.shareFacebook = function(event) {
           event.preventDefault();
           console.log('Share: Facebook');
@@ -65,14 +82,31 @@
         };
 
         $scope.shareEmail = function() {
-          console.log('Share: Email');
-          $scope.complete = true;
+          $scope.attempted = true;
+          var destinations = $scope.validDestinations();
+          if ($scope.form.$valid && destinations.length > 0) {
+            $scope.processing = true;
+            // set POST data
+            var data = angular.copy($scope.user);
+            data.destinations = destinations;
+            // send req
+            $http.post('/share', data)
+              .success(function () {
+                $scope.complete = true;
+              })
+              .error(function (data) {
+                $scope.responseError = data.msg;
+                $scope.processing    = false;
+              })
+            ;
+          }
         };
 
         $scope.toggleEmailForm = function(event) {
           event.preventDefault();
           $scope.emailFormVisible = !$scope.emailFormVisible;
         };
-      }]);
+      }])
+    ;
 
 })();
