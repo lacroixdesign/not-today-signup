@@ -43,6 +43,13 @@ if (cluster.isMaster && !module.parent) {
     });
   }
 
+  // set hostname (used for Facebook image URL)
+  app.use(function (req, res, next) {
+    var host = process.env.HOST_NAME || req.headers.host || 'www.ntc.io';
+    res.locals.host = 'http://' + host;
+    next();
+  });
+
   // config
   require('./config/env')(app, express);
 

@@ -1,4 +1,3 @@
-/* jshint unused:false */
 
 (function() {
 
@@ -52,8 +51,8 @@
       }])
 
     // Share controller
-    .controller('ShareCtrl', ['$scope', '$http',
-      function($scope, $http) {
+    .controller('ShareCtrl', ['$scope', '$http', 'Twitter', 'Facebook', 'Analytics',
+      function($scope, $http, Twitter, Facebook, Analytics) {
         $scope.destinations = [{},{},{},{},{}];
 
         $scope.clearErrors = function () {
@@ -71,17 +70,16 @@
             });
         };
 
-        $scope.shareFacebook = function(event) {
-          event.preventDefault();
-          console.log('Share: Facebook');
+        $scope.shareFacebook = function (image, url, title, caption, desc) {
+          url   = url   || 'http://www.ntc.io';
+          title = title || 'Not Today Coalition';
+          desc  = desc  || 'You can help give hope to the hopeless - signup '+
+                          'at www.nottodaycoalition.org and help tell the '+
+                          'story of the Dalits to everyone!';
+          Facebook.share(url, title, caption, desc, image);
         };
 
-        $scope.shareTwitter = function(event) {
-          event.preventDefault();
-          console.log('Share: Twitter');
-        };
-
-        $scope.shareEmail = function() {
+        $scope.shareEmail = function () {
           $scope.attempted = true;
           var destinations = $scope.validDestinations();
           if ($scope.form.$valid && destinations.length > 0) {
@@ -92,6 +90,7 @@
             // send req
             $http.post('/share', data)
               .success(function () {
+                Analytics.event('Social', 'Share', 'Email');
                 $scope.complete = true;
               })
               .error(function (data) {
@@ -102,10 +101,6 @@
           }
         };
 
-        $scope.toggleEmailForm = function(event) {
-          event.preventDefault();
-          $scope.emailFormVisible = !$scope.emailFormVisible;
-        };
       }])
     ;
 

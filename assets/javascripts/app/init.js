@@ -6,6 +6,7 @@
   , 'ldc.form.mailcheck'
   , 'ldc.ui.svg'
   , 'ngAnimate'
+  , 'ldc.services.social'
   ]);
 
 })();

@@ -15,19 +15,20 @@
     text-transform: uppercase;
   }
 
-  &.active {
-    color: $white;
-  }
-
   &.subtle {
     color: $white;
     color: lighten($green, 15);
+  }
+
+  &.active {
+    color: $white;
   }
 
   &.action {
 
     > a {
       display: inline-block;
+      cursor: pointer;
       @include transition(all 0.15s linear);
     }
 

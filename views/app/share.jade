@@ -4,14 +4,14 @@
     h1 Share
 
     ul.share-icons
-      li.m-icon
-        a(ng-click='shareTwitter($event)', href="#")
+      li.m-icon.action.subtle
+        a(href=tweetHref, target='_blank')
           +icon("000")
-      li.m-icon
-        a(ng-click='shareFacebook($event)', href="#")
+      li.m-icon.action.subtle
+        a(ng-click="shareFacebook('#{host}/images/logo.png')")
           +icon("001")
-      li.m-icon
-        a(ng-click='toggleEmailForm($event)', href='#')
+      li.m-icon.action.subtle(ng-class='{ active: emailFormVisible }')
+        a(ng-click='emailFormVisible = !emailFormVisible')
           +icon("002")
 
     .l-form(ng-show='emailFormVisible')

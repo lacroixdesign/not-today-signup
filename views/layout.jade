@@ -46,7 +46,6 @@ html(lang="en", ng-app="ntc")
     //- meta(name="msapplication-TileImage", content="/windows-icon.png")
 
     != assets.tag('/stylesheets/application.css')
-    != assets.tag('/javascripts/application.js')
 
     //- Typekit
     script(type="text/javascript", src="//use.typekit.net/nnh2mjv.js")
@@ -79,8 +78,10 @@ html(lang="en", ng-app="ntc")
           s.parentNode.insertBefore(t, s);
         })();
 
+    != assets.tag('/javascripts/application.js')
 
   body(ng-controller="MainCtrl")
+    include _facebook
     include _mixins
     include app/nav.jade
     include app/home.jade

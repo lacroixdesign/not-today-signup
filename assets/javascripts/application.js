@@ -1,4 +1,5 @@
 //= require_tree ./lib/directives
+//= require_tree ./lib/services
 //= require app/services
 //= require app/config
 //= require app/controllers
