@@ -19,8 +19,8 @@
     /**
      * Signup controller
      */
-    .controller('SignupCtrl', ['$scope', '$routeParams', '$http', 'Router', 'type',
-      function($scope, $routeParams, $http, Router, type) {
+    .controller('SignupCtrl', ['$scope', '$routeParams', '$http', 'Router', 'Analytics', 'type',
+      function($scope, $routeParams, $http, Router, Analytics, type) {
         $scope.type = type;
 
         $scope.clearErrors = function () {
@@ -36,6 +36,7 @@
             $http.post(url, $scope.user)
               .success(function () {
                 $scope.complete = true;
+                Analytics.event('Coalition', 'Signed Up', $scope.type);
               })
               .error(function (data) {
                 $scope.responseError = data.msg;
@@ -72,7 +73,8 @@
                 Analytics.event('Donations', 'Donated');
               })
               .error(function () {
-                $scope.processing = false;
+                $scope.responseError = 'Sorry, an error occurred. Your card has not been charged.';
+                $scope.processing    = false;
               })
             ;
           }
