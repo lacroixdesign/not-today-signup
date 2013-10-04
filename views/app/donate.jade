@@ -3,20 +3,31 @@
   .s-donate.m-section
     h1 Donate
 
-    .l-form
-      form#donate-form.m-form(ng:submit="submit()", name="form", novalidate)
+    .l-form.l-donate-form
+      form#donate-form.m-form(name="form", novalidate, stripe-form='handleStripe')
         div(ng:hide="complete")
           p &ldquo;A Dalit child that is educated is a Dalit child who has been rescued from human trafficking&rdquo;
           p Help support the Not Today Coalition today by donating below.  Your donations will help build schools and build hope.
           .m-input-group
-            input.large(type="text", name="amount", ng:model="donate.amount", ng:keydown="clearErrors()", ng:change="clearErrors()", required, placeholder="Amount")
-        .form-error(ng:if="(form.email.$error || responseError) && attempted")
-          //- div(ng:if="form.email.$error.email") Invalid email address. Please double-check your entry and try again.
-          //- div(ng:if="form.email.$error.required") Email address is required.
+            label Amount in USD (minimum $1)
+            input.large(type="text", name="amount", ng:model="amount", required, currency-mask, placeholder="Amount in USD")
+          .m-input-group
+            label Card number
+            input.large(type="text", name="number", ng:model="number", required, payments-validate='card', payments-format='card', placeholder="Card number")
+          .m-input-group
+            .donate-form--expires
+              label Expires (mm/yyyy)
+              input.large(type="text", name="expiry", ng:model="expiry", required, payments-validate='expiry', payments-format='expiry', placeholder="Expires (mm/yyyy)")
+            .donate-form--cvc
+              label CVC
+              input.large(type="text", name="cvc", ng:model="cvc", required, payments-validate='cvc', payments-format='cvc', placeholder="CVC")
+          .m-input-group
+            label Name on card
+            input.large(type="text", name="name", ng:model="name", required, placeholder="Name on card")
+        .form-error(ng:if="(form.email.$error || responseError)")
           div(ng:if="responseError") {{ responseError }}
         .form-success(ng:if="complete") Thank you for your support of the Not Today Coalition. Together we are building hope.
-        .form-suggestion(mailcheck="donate.amount", ng:if="donate.amount", ng:hide="complete")
-        button.btn-light.large.fill(type="submit", ng:disabled="processing", ng:hide="complete") Donate
+        button.btn-light.large.fill(type="submit", ng:disabled="processing || form.$pristine || (form.$dirty && form.$invalid)", ng:hide="complete") {{ processing ? 'Processing…' : 'Donate' }}
 
     .section--footer
       p: a(ng-href='#{{route.home}}') &larr; return home

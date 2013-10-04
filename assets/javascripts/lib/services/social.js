@@ -36,7 +36,7 @@
 
       function shareCallback (event) {
         if (event !== 'undefined' && event.type === "tweet")
-          Analytics.event('Social', 'Share', 'Twitter');
+          Analytics.event('Social', 'Shared', 'Twitter');
       }
 
       window.twttr.ready(function (twttr) {
@@ -52,7 +52,7 @@
 
       function shareCallback (response) {
         if (typeof response !== 'undefined' && typeof response.post_id !== 'undefined')
-          Analytics.event('Social', 'Share', 'Facebook');
+          Analytics.event('Social', 'Shared', 'Facebook');
       }
 
       this.share = function (url, title, caption, description, image) {

@@ -5,4 +5,6 @@ require('vendor/fastclick.min');
 require('vendor/angular.min');
 require('vendor/angular-route.min');
 require('vendor/angular-animate.min');
+require('vendor/angular-payments.min');
+require('vendor/directives/angular-currency-mask.min');
 require('bower/mailcheck/src/mailcheck.min');

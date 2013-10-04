@@ -67,6 +67,7 @@ if (cluster.isMaster && !module.parent) {
   require('./config/routes')(app);
   // features
   app.use(require('./lib/signup'));
+  app.use(require('./lib/donate'));
   app.use(require('./lib/share'));
 
   // start server

@@ -3,7 +3,9 @@
 
   angular.module('ntc.controllers', ['ntc.services'])
 
-    // Main controller
+    /**
+     * Main controller
+     */
     .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$route', 'Router',
       function($scope, $rootScope, $location, $route, Router) {
         $scope.route = Router;
@@ -14,7 +16,9 @@
         });
       }])
 
-    // Signup controller
+    /**
+     * Signup controller
+     */
     .controller('SignupCtrl', ['$scope', '$routeParams', '$http', 'Router', 'type',
       function($scope, $routeParams, $http, Router, type) {
         $scope.type = type;
@@ -41,16 +45,44 @@
         };
       }])
 
-    // Donate controller
-    .controller('DonateCtrl', ['$scope',
-      function($scope) {
-        $scope.submit = function() {
-          console.log('Submit: donate');
-          $scope.complete = true;
+    /**
+     * Donate controller
+     */
+    .controller('DonateCtrl', ['$scope', '$http', 'Analytics',
+      function($scope, $http, Analytics) {
+
+        $scope.handleStripe = function (status, response) {
+          $scope.responseError = false;
+          $scope.processing    = true;
+
+          if (response.error) {
+            // error
+            $scope.responseError = response.error.message;
+            $scope.processing    = false;
+
+          } else {
+            // success
+            var token  = response.id;
+            var amount = $scope.amount;
+
+            $http.post('/donate', { token: token, amount: amount })
+              .success(function () {
+                $scope.complete      = true;
+                $scope.responseError = false;
+                Analytics.event('Donations', 'Donated');
+              })
+              .error(function () {
+                $scope.processing = false;
+              })
+            ;
+          }
         };
+
       }])
 
-    // Share controller
+    /**
+     * Share controller
+     */
     .controller('ShareCtrl', ['$scope', '$http', 'Twitter', 'Facebook', 'Analytics',
       function($scope, $http, Twitter, Facebook, Analytics) {
         $scope.destinations = [{},{},{},{},{}];
@@ -90,7 +122,7 @@
             // send req
             $http.post('/share', data)
               .success(function () {
-                Analytics.event('Social', 'Share', 'Email');
+                Analytics.event('Social', 'Shared', 'Email');
                 $scope.complete = true;
               })
               .error(function (data) {

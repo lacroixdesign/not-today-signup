@@ -1,0 +1,15 @@
+.l-donate-form {
+
+  label {
+    text-align: left;
+  }
+
+  .donate-form--expires {
+    @include span-columns(8);
+  }
+
+  .donate-form--cvc {
+    @include span-columns(4);
+  }
+
+} // .l-donate-form

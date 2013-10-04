@@ -7,6 +7,8 @@
   , 'ldc.ui.svg'
   , 'ngAnimate'
   , 'ldc.services.social'
+  , 'angularPayments'
+  , 'currencyMask'
   ]);
 
 })();
