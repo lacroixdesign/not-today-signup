@@ -58,16 +58,21 @@
           $scope.processing    = true;
 
           if (response.error) {
+
             // error
             $scope.responseError = response.error.message;
             $scope.processing    = false;
 
           } else {
-            // success
-            var token  = response.id;
-            var amount = $scope.amount;
 
-            $http.post('/donate', { token: token, amount: amount })
+            // success
+            var payload = {
+              token:  response.id,
+              amount: $scope.amount,
+              email:  $scope.user.email
+            };
+
+            $http.post('/donate', payload)
               .success(function () {
                 $scope.complete      = true;
                 $scope.responseError = false;

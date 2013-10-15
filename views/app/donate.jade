@@ -24,6 +24,9 @@
           .m-input-group
             label Name on card
             input.large(type="text", name="name", ng:model="name", required, placeholder="Name on card")
+          .m-input-group
+            label Email address
+            input.large(type="email", name="email", ng:model="user.email", required, placeholder="Email address")
         .form-error(ng:if="(form.email.$error || responseError)")
           div(ng:if="responseError") {{ responseError }}
         .form-success(ng:if="complete") Thank you for your support of the Not Today Coalition. Together we are building hope.
