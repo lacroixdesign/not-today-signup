@@ -41,7 +41,8 @@
               .error(function (data) {
                 $scope.responseError = data.msg;
                 $scope.processing    = false;
-              });
+              })
+            ;
           }
         };
       }])
