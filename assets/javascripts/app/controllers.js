@@ -111,7 +111,7 @@
         };
 
         $scope.shareFacebook = function (image, url, title, caption, desc) {
-          url   = url   || 'http://www.ntc.io';
+          url   = url   || 'https://www.nottodaycoalition.org';
           title = title || 'Not Today Coalition';
           desc  = desc  || 'You can help give hope to the hopeless - signup '+
                           'at www.nottodaycoalition.org and help tell the '+
