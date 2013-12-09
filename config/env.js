@@ -1,11 +1,12 @@
-var dotenv = require('dotenv')();
 
 module.exports = function(app, express) {
 
   var dbName = 'nodejs_blueprint';
+  var dotenv;
 
   // development
   if ('development' === app.get('env')) {
+    dotenv = require('dotenv')();
     dotenv.load();
     app.use(express.logger('dev'));
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
@@ -14,6 +15,7 @@ module.exports = function(app, express) {
 
   // test
   if ('test' === app.get('env')) {
+    dotenv = require('dotenv')();
     dotenv.load();
     app.set('mongodb-uri', 'mongodb://localhost/' + dbName + '_test');
   }
